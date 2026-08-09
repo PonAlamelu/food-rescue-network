@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import api from '../api/axios';
-// import { AuthContext } from '../context/AuthContext';
 
 import { 
-  Package, 
 
   Truck, 
   Search, 

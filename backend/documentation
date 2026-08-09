@@ -1,0 +1,410 @@
+# FoodRescue Network Documentation
+
+## 1. Project Overview
+
+### Project Title
+
+**FoodRescue Network**
+
+### Domain
+
+Social Welfare / Food Waste Management
+
+### Technology Stack
+
+* MongoDB
+* Express.js
+* React.js
+* Node.js
+* Tailwind CSS
+* Socket.io
+* Leaflet Maps
+* Nodemailer
+* Twilio
+
+### Project Description
+
+FoodRescue Network is a full-stack MERN web application designed to reduce food waste by connecting food donors with NGOs and volunteers. The platform enables restaurants, grocery stores, and individuals to donate surplus food efficiently to people in need.
+
+The system provides real-time communication, geolocation-based donation discovery, donation lifecycle tracking, and role-based access control for secure operations.
+
+---
+
+# 2. Objectives
+
+* Reduce food wastage
+* Help NGOs and volunteers access surplus food quickly
+* Provide real-time food donation tracking
+* Enable location-based food distribution
+* Improve communication between donors and receivers
+
+---
+
+# 3. System Architecture
+
+## Frontend
+
+The frontend is developed using React 19 and Tailwind CSS.
+
+### Features
+
+* Responsive UI
+* Interactive maps using Leaflet
+* Real-time notifications using Socket.io-client
+* Authentication management using Context API
+
+## Backend
+
+The backend is developed using Node.js and Express.js.
+
+### Features
+
+* RESTful APIs
+* JWT Authentication
+* Role-Based Access Control
+* Notification services
+* Business logic handling
+
+## Database
+
+MongoDB is used as the primary database.
+
+### Features
+
+* Mongoose ODM
+* 2dsphere indexing for geolocation search
+* Efficient document storage
+
+---
+
+# 4. User Roles
+
+## 4.1 Donors
+
+Examples:
+
+* Restaurants
+* Grocery stores
+* Individuals
+
+### Functionalities
+
+* Create food donation posts
+* Add expiry date and pickup location
+* Manage donation history
+* Approve NGO requests
+
+---
+
+## 4.2 NGOs & Volunteers
+
+### Functionalities
+
+* Browse nearby donations
+* Request food donations
+* Track request status
+* Confirm pickup and delivery
+
+---
+
+## 4.3 Admins
+
+### Functionalities
+
+* Approve user registrations
+* Monitor platform activities
+* Generate reports
+* Manage global settings
+
+---
+
+# 5. Key Features
+
+## Smart Geolocation
+
+* Donors can mark pickup points on maps
+* NGOs can discover nearby food donations
+
+## Donation Lifecycle Tracking
+
+Donation status flow:
+
+POSTED → REQUESTED → APPROVED → PICKED_UP → DELIVERED
+
+## Real-Time Notifications
+
+Users receive:
+
+* Request alerts
+* Approval notifications
+* Expiry reminders
+
+## Impact Dashboard
+
+Tracks:
+
+* Meals rescued
+* Donations completed
+* People served
+
+## Responsive Design
+
+Optimized for:
+
+* Desktop
+* Tablets
+* Mobile devices
+
+---
+
+# 6. Project Structure
+
+## Backend Structure
+
+backend/
+│
+├── models/
+├── controllers/
+├── routes/
+├── middleware/
+├── config/
+└── server.js
+
+### Models
+
+* User Model
+* Donation Model
+* Request Model
+* Notification Model
+
+### Controllers
+
+Contains business logic for:
+
+* Authentication
+* Donations
+* Requests
+* Notifications
+
+---
+
+## Frontend Structure
+
+frontend/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── context/
+│   ├── services/
+│   └── App.js
+
+### Context API
+
+Used for:
+
+* Authentication state
+* Notification state
+
+---
+
+# 7. REST API Documentation
+
+## 7.1 User APIs (/api/users)
+
+### Register User
+
+POST /api/users
+
+### Login User
+
+POST /api/users/login
+
+### Get User Profile
+
+GET /api/users/profile
+
+### Get All Users (Admin)
+
+GET /api/users
+
+### Approve User (Admin)
+
+PUT /api/users/:id/approve
+
+### Admin Statistics
+
+GET /api/users/stats/admin
+
+---
+
+## 7.2 Donation APIs (/api/donations)
+
+### Create Donation
+
+POST /api/donations
+
+### Browse Donations
+
+GET /api/donations
+
+### Get My Donations
+
+GET /api/donations/mydonations
+
+### Get Donation Details
+
+GET /api/donations/:id
+
+### Confirm Pickup
+
+PUT /api/donations/:id/pickup
+
+### Confirm Delivery
+
+PUT /api/donations/:id/deliver
+
+### Donation Statistics
+
+GET /api/donations/stats/[role]
+
+---
+
+## 7.3 Request APIs (/api/requests)
+
+### Request Food
+
+POST /api/requests
+
+### Get My Requests
+
+GET /api/requests/myrequests
+
+### Get All Requests
+
+GET /api/requests/all
+
+### Approve/Reject Request
+
+PUT /api/requests/:id
+
+---
+
+## 7.4 Notification APIs (/api/notifications)
+
+### Get Notifications
+
+GET /api/notifications
+
+### Unread Notification Count
+
+GET /api/notifications/unread-count
+
+### Mark Notification as Read
+
+PUT /api/notifications/:id/read
+
+---
+
+# 8. Security Features
+
+## JWT Authentication
+
+Secure login system using JSON Web Tokens.
+
+## Protected Routes
+
+Most APIs require:
+Authorization: Bearer <token>
+
+## Role-Based Access Control
+
+Separate access permissions for:
+
+* Donors
+* NGOs
+* Volunteers
+* Admins
+
+## Centralized Error Handling
+
+Consistent API error responses using middleware.
+
+---
+
+# 9. Database Design
+
+## Collections
+
+* users
+* donations
+* requests
+* notifications
+* deliveries
+
+## Geolocation Support
+
+MongoDB 2dsphere indexing is used for nearby donation searches.
+
+---
+
+# 10. Real-Time Communication
+
+Socket.io is implemented for:
+
+* Instant notifications
+* Request updates
+* Donation approval alerts
+
+---
+
+# 11. Third-Party Integrations
+
+## Nodemailer
+
+Used for:
+
+* Email notifications
+* Registration confirmations
+
+## Twilio
+
+Used for:
+
+* SMS alerts
+* Emergency notifications
+
+## Leaflet Maps
+
+Used for:
+
+* Interactive location selection
+* Nearby donation discovery
+
+---
+
+# 12. Advantages of the System
+
+* Reduces food waste
+* Helps needy communities
+* Real-time communication
+* Efficient food distribution
+* Easy-to-use responsive interface
+
+---
+
+# 13. Future Enhancements
+
+* AI-based food demand prediction
+* Mobile application
+* QR-based donation tracking
+* Multi-language support
+* Blockchain-based transparency
+
+---
+
+# 14. Conclusion
+
+FoodRescue Network is a socially impactful MERN stack application that efficiently connects food donors with NGOs and volunteers. The platform helps reduce food wastage while ensuring surplus food reaches people in need through secure, real-time, and location-aware technology.
+
+The project demonstrates modern full-stack development concepts including REST APIs, JWT authentication, geolocation services, real-time communication, and responsive UI design.

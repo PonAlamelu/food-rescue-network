@@ -1,0 +1,312 @@
+# 15. Installation & Setup Guide
+
+## 15.1 Prerequisites
+
+Before setting up the project, ensure the following software is installed on your system:
+
+### Required Software
+
+* Node.js (v16 or higher)
+* npm or yarn package manager
+* MongoDB (Local installation or MongoDB Atlas)
+
+### Recommended Tools
+
+* VS Code
+* MongoDB Compass
+* Postman API Tester
+
+---
+
+# 15.2 Backend Configuration
+
+## Step 1: Navigate to Backend Directory
+
+```bash
+cd backend
+```
+
+## Step 2: Install Backend Dependencies
+
+```bash
+npm install
+```
+
+## Step 3: Configure Environment Variables
+
+Create a `.env` file inside the `backend/` folder.
+
+### Add the following configuration:
+
+```env
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/foodrescue
+JWT_SECRET=your_jwt_secret_here
+NODE_ENV=development
+```
+
+### Environment Variable Description
+
+| Variable   | Description                       |
+| ---------- | --------------------------------- |
+| PORT       | Backend server port               |
+| MONGO_URI  | MongoDB connection string         |
+| JWT_SECRET | Secret key for JWT authentication |
+| NODE_ENV   | Application environment           |
+
+---
+
+## Step 4: Start Backend Server
+
+```bash
+npm start
+```
+
+The backend server will run at:
+
+```bash
+http://localhost:5000
+```
+
+---
+
+# 15.3 Frontend Configuration
+
+## Step 1: Navigate to Frontend Directory
+
+Open a new terminal and run:
+
+```bash
+cd frontend
+```
+
+---
+
+## Step 2: Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## Step 3: Configure Frontend Environment Variables
+
+Create a `.env` file inside the `frontend/` folder.
+
+### Add the following configuration:
+
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_GOOGLE_MAPS_API_KEY=your_google_maps_key
+```
+
+### Environment Variable Description
+
+| Variable                      | Description          |
+| ----------------------------- | -------------------- |
+| REACT_APP_API_URL             | Backend API base URL |
+| REACT_APP_GOOGLE_MAPS_API_KEY | Google Maps API Key  |
+
+---
+
+## Step 4: Start Frontend Application
+
+```bash
+npm start
+```
+
+The frontend application will automatically open at:
+
+```bash
+http://localhost:3000
+```
+
+---
+
+# 15.4 Quick Start Using Root Scripts
+
+The project contains a root-level `package.json` file to manage frontend and backend simultaneously.
+
+## Install All Dependencies
+
+```bash
+npm run install-all
+```
+
+## Run Frontend and Backend Concurrently
+
+```bash
+npm run dev
+```
+
+This command starts:
+
+* React frontend
+* Node.js backend
+* Socket.io services
+
+simultaneously using concurrent execution.
+
+---
+
+# 15.5 Initial Setup Notes
+
+## Admin Access Setup
+
+After registration, manually update a user role to:
+
+```json
+role: "Admin"
+```
+
+and:
+
+```json
+isApproved: true
+```
+
+using:
+
+* MongoDB Compass
+* Mongo Shell
+* Atlas Database Collections
+
+This enables access to admin functionalities.
+
+---
+
+## User Approval Workflow
+
+Newly registered:
+
+* Donors
+* NGOs
+
+are initially created with:
+
+```json
+isApproved: false
+```
+
+An Admin must approve the account before login access is granted.
+
+---
+
+## MongoDB Setup Notes
+
+Ensure MongoDB service is running before starting the backend server.
+
+### Local MongoDB Example
+
+```env
+MONGO_URI=mongodb://localhost:27017/foodrescue
+```
+
+### MongoDB Atlas Example
+
+```env
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/foodrescue
+```
+
+---
+
+# 15.6 Common Troubleshooting
+
+## Backend Not Starting
+
+### Possible Reasons
+
+* MongoDB service not running
+* Incorrect `.env` values
+* Port already in use
+
+### Solution
+
+Check:
+
+```bash
+mongod
+```
+
+and verify `.env` configuration.
+
+---
+
+## Frontend API Errors
+
+### Possible Reasons
+
+* Backend server not running
+* Wrong API URL
+* CORS issues
+
+### Solution
+
+Verify:
+
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+```
+
+and ensure backend is active.
+
+---
+
+## JWT Authentication Errors
+
+### Solution
+
+Ensure:
+
+* JWT_SECRET exists in backend `.env`
+* Token is included in:
+
+```bash
+Authorization: Bearer <token>
+```
+
+---
+
+# 15.7 Recommended Development Practices
+
+* Use separate `.env` files for development and production
+* Never commit `.env` files to GitHub
+* Use MongoDB Atlas for cloud deployment
+* Validate all API requests
+* Use HTTPS in production
+
+---
+
+
+
+## Database Hosting
+
+* MongoDB Atlas
+
+---
+
+# 15.9 Project Startup Flow
+
+1. Start MongoDB
+2. Start Backend Server
+3. Start Frontend Application
+4. Register Users
+5. Approve NGO/Donor Accounts via Admin
+6. Begin Donation Operations
+
+---
+
+# 15.10 Expected Application Workflow
+
+### Donor Workflow
+
+Register → Login → Create Donation → Approve Requests
+
+### NGO Workflow
+
+Register → Approval → Browse Donations → Request Food → Pickup → Delivery
+
+### Admin Workflow
+
+Login → Approve Users → Monitor Activities → Generate Reports
