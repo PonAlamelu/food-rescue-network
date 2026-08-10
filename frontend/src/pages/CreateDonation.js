@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import api from '../api/axios';
 import MapSelector from '../components/MapSelector';
 import { motion } from 'framer-motion';
-import { Package, MapPin, Calendar, ArrowLeft, PlusCircle, AlertCircle, Info, Utensils } from 'lucide-react';
+import { ArrowLeft, AlertCircle, Utensils, PlusCircle, Calendar, MapPin, Info } from 'lucide-react';
 
 const CreateDonation = () => {
     const [formData, setFormData] = useState({
