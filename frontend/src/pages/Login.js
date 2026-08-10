@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../api/axios';
 import { motion } from 'framer-motion';
-import { Mail, Lock, ArrowRight, AlertCircle, LogIn } from 'lucide-react';
+import { Mail, Lock, AlertCircle, LogIn } from 'lucide-react';
 
 const Login = () => {
     const [formData, setFormData] = useState({

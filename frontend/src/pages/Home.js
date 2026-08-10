@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShieldCheck, Users, ArrowRight, Zap, Globe, Award, Utensils } from 'lucide-react';
+import { Heart, ShieldCheck, Users, ArrowRight, Zap, Award, Utensils } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './Home.css';
 const Home = () => {
