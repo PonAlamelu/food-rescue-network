@@ -243,11 +243,19 @@ This project is licensed under the ISC License - see the LICENSE file for detail
 
 ## 👥 Authors
 
+<<<<<<< HEAD
 **Your Name** - Final Year Project
 
 ## 📞 Support
 
 For support, email your_email@example.com or open an issue in the repository.
+=======
+**Ponalamelu** - Final Year Project
+
+## 📞 Support
+
+For support, email ponalamelusoff1@gmail.com or open an issue in the repository.
+>>>>>>> origin/main
 
 ## 🙏 Acknowledgments
 
